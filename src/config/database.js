@@ -4,10 +4,7 @@ const User = require('../models/userModel')
 const connectDB = async () => {
     try {
       // Update your MongoDB connection string with authentication details
-      await mongoose.connect('mongodb://mongo:27017/learning_platform', {
-        useNewUrlParser: true,
-        useUnifiedTopology: true,
-      });
+     await mongoose.connect('mongodb://root:MTc1MzctbGF2YW55@localhost:27017');
       console.log('MongoDB connected');
 
     // Add sample data
