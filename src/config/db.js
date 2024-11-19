@@ -1,18 +1,19 @@
 const mongoose = require('mongoose');
-const User = require('../models/userModel');
+const dotenv = require('dotenv');
+
+dotenv.config();
 
 const connectDB = async () => {
-  try {
-    await mongoose.connect('mongodb://root:iSqItPYCTFzjht8p45HPCif6@@172.21.79.10:27017', {
-      useNewUrlParser: true,
-      useUnifiedTopology: true,
-      authSource: 'admin'  // Use the admin database for authentication
-    });
-    console.log('MongoDB connected');
-  } catch (error) {
-    console.error('MongoDB connection error:', error);
-    process.exit(1);
-  }
+    try {
+        await mongoose.connect(process.env.MONGODB_URI, {
+            useNewUrlParser: true,
+            useUnifiedTopology: true,
+        });
+        console.log('MongoDB connected');
+    } catch (error) {
+        console.error('MongoDB connection failed:', error.message);
+        process.exit(1);
+    }
 };
 
 module.exports = connectDB;
